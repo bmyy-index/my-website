@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>经乱离后天恩流夜郎忆旧游书怀赠江夏韦太守良宰 · 文字珠帘</title>
+<meta name="description" content="李白最长诗《经乱离后天恩流夜郎忆旧游书怀赠江夏韦太守良宰》——以毛笔字为珠，悬于传统屋檐之下。拂之即摆，拽之即走，松手回弹。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Zhi+Mang+Xing&family=Liu+Jian+Mao+Cao&family=Cormorant+Garamond:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ede0c4;
+  --paper-deep:#d8c69a;
+  --vermilion:#a82c2c;
+  --vermilion-deep:#7a1f1f;
+  --gold:#c9a45a;
+  --gold-deep:#8a6b2a;
+  --ink:#2a1a0d;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: 'KaiTi','STKaiti','Songti SC','SimSun',serif;
+  color: var(--ink);
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+  background:
+    radial-gradient(ellipse at 50% -10%, #f4ead0 0%, #ecdcb1 55%, #c8b07d 100%);
+}
+body::before{
+  content:''; position:fixed; inset:0;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(168,44,44,.06) 0 14%, transparent 16%),
+    radial-gradient(circle at 85% 28%, rgba(201,164,90,.09) 0 18%, transparent 20%),
+    radial-gradient(circle at 75% 78%, rgba(168,44,44,.05) 0 16%, transparent 18%);
+  pointer-events:none; z-index: 1;
+}
+
+/* 装饰云纹 SVG */
+.cloud{ position: fixed; pointer-events:none; opacity:.16; z-index:2; }
+
+/* 导航 */
+.nav{
+  position: fixed; top:0; left:0; right:0; height: 60px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 0 40px;
+  background: linear-gradient(to bottom, rgba(244,234,208,.92), rgba(244,234,208,.55));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+  border-bottom: 1px solid rgba(168,44,44,.18);
+}
+.brand{
+  display:flex; align-items:center; gap:14px;
+  font-family: 'Ma Shan Zheng','KaiTi',serif;
+  color: var(--vermilion-deep);
+  font-size: 22px;
+  letter-spacing: 6px;
+}
+.brand .seal{
+  width:34px;height:34px;background:var(--vermilion);color:#f4ead0;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:'Ma Shan Zheng',serif;font-size:20px;
+  border-radius:4px;
+  box-shadow: 0 2px 6px rgba(168,44,44,.35);
+}
+.nav ul{display:flex; gap:30px; list-style:none; font-size:13px; letter-spacing:6px;}
+.nav ul a{color:var(--vermilion-deep); text-decoration:none; opacity:.7; transition: opacity .2s;}
+.nav ul a:hover{opacity:1;}
+
+/* 主舞台 */
+.stage{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 640px;
+  overflow: hidden;
+}
+
+/* 屋檐图片：位于顶部，占画面上部约三分之一 */
+.roof{
+  position: absolute;
+  top: 62px; right: 1.5vw;
+  width: min(66vw, 1060px);
+  height: auto;
+  max-height: 34vh;
+  object-fit: contain;
+  z-index: 5;
+  filter: drop-shadow(0 14px 22px rgba(0,0,0,.16));
+  pointer-events: none;
+  user-select: none;
+}
+
+/* 珠帘 canvas：从屋檐下沿一直垂到视口底部，占画面一半以上 */
+#curtain{
+  position: absolute;
+  left: 0; right: 0;
+  top: 320px;
+  height: calc(100% - 320px);
+  width: 100%;
+  z-index: 8;
+  touch-action: none;
+  cursor: grab;
+  display: block;
+}
+#curtain:active{ cursor: grabbing; }
+
+/* 左侧大标题 */
+.title-block{
+  position: absolute;
+  left: 3.5vw; top: 44%;
+  transform: translateY(-50%);
+  z-index: 12;
+  pointer-events: none;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 22px;
+  align-items: flex-start;
+}
+.title-block .cn{
+  font-family: 'Zhi Mang Xing','Ma Shan Zheng',serif;
+  color: var(--vermilion-deep);
+  font-size: clamp(24px, 2.6vw, 46px);
+  writing-mode: vertical-rl;
+  letter-spacing: 10px;
+  line-height: 1.5;
+  font-weight: 700;
+  text-shadow: 0 2px 0 rgba(255,255,255,.35);
+}
+.title-block .side{
+  display: flex; flex-direction: column; gap: 14px;
+  align-items: flex-start;
+}
+.title-block .en{
+  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  color: var(--gold-deep);
+  writing-mode: vertical-rl;
+  font-size: 12px;
+  letter-spacing: 4px;
+  opacity: .85;
+  font-weight: 500;
+}
+.title-block .author{
+  writing-mode: vertical-rl;
+  font-family: 'Ma Shan Zheng', serif;
+  color: var(--vermilion);
+  font-size: 15px;
+  letter-spacing: 7px;
+  border-right: 2px solid var(--vermilion);
+  padding-right: 9px;
+}
+
+/* 右侧说明 */
+.intro-block{
+  position: absolute;
+  right: 3.5vw; bottom: 12vh;
+  max-width: 290px;
+  z-index: 12;
+  font-family: 'Ma Shan Zheng','KaiTi', serif;
+  font-size: 13.5px;
+  line-height: 2.1;
+  letter-spacing: 3px;
+  background: rgba(244,234,208,.72);
+  padding: 18px 22px;
+  border-left: 2px solid var(--vermilion);
+  pointer-events: none;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+}
+.intro-block .h{
+  font-size: 17px;
+  color: var(--vermilion-deep);
+  margin-bottom: 10px;
+  letter-spacing: 8px;
+  font-family: 'Ma Shan Zheng', serif;
+}
+
+/* 页码 / 印章 */
+.footer-bar{
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  display:flex; justify-content:space-between; align-items:flex-end;
+  padding: 20px 4.5vw 16px;
+  z-index: 20;
+  pointer-events: none;
+}
+.page-num{
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  color: var(--vermilion-deep);
+  letter-spacing: 2px;
+}
+.page-num small{font-size:14px;color:var(--gold-deep);letter-spacing:4px;margin-right:6px;font-variant: small-caps;}
+.page-num em{font-style: normal; color: var(--gold-deep); margin: 0 2px;}
+.seal-mark{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding: 10px 14px;
+  background: var(--vermilion);
+  color: #f4ead0;
+  font-family: 'Ma Shan Zheng', serif;
+  font-size: 16px;
+  letter-spacing: 6px;
+  border-radius: 3px;
+  box-shadow: 0 4px 10px rgba(168,44,44,.35);
+  position: relative;
+}
+.seal-mark::before{
+  content:''; position:absolute; inset:3px;
+  border: 1px solid rgba(244,234,208,.5);
+  border-radius: 2px;
+  pointer-events:none;
+}
+
+.hint{
+  position: absolute;
+  left: 50%; bottom: 13vh;
+  transform: translateX(-50%);
+  font-size: 12px;
+  letter-spacing: 8px;
+  color: var(--vermilion-deep);
+  opacity: .55;
+  z-index: 14;
+  pointer-events: none;
+  animation: pulse 3.2s ease-in-out infinite;
+  font-family: 'Ma Shan Zheng', serif;
+  white-space: nowrap;
+}
+@keyframes pulse{0%,100%{opacity:.35}50%{opacity:.75}}
+
+/* 滑动变阻器控制面板 */
+.control-panel{
+  position: absolute;
+  left: 3.2vw;
+  bottom: 14vh;
+  z-index: 30;
+  width: 260px;
+  padding: 14px 18px 16px;
+  background: linear-gradient(135deg, rgba(244,234,208,.88), rgba(232,212,168,.78));
+  border: 1.5px solid var(--vermilion);
+  border-radius: 6px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.18), inset 0 0 0 1px rgba(244,234,208,.45);
+  pointer-events: auto;
+  font-family: 'Ma Shan Zheng','KaiTi', serif;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.panel-title{
+  font-size: 14px;
+  color: var(--vermilion-deep);
+  letter-spacing: 5px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(168,44,44,.35);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.panel-title .dot{
+  width: 8px; height: 8px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f0d585, #c9a45a 60%, #8a6b2a);
+  border: 1px solid var(--vermilion-deep);
+  display: inline-block;
+}
+.ctrl-row{
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 10px;
+}
+.ctrl-label{
+  width: 22px;
+  font-size: 16px;
+  color: var(--vermilion-deep);
+  letter-spacing: 2px;
+  flex-shrink: 0;
+}
+.ctrl-row input[type=range]{
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 7px;
+  background: linear-gradient(to right, var(--vermilion-deep) 0%, var(--vermilion) 40%, var(--gold) 100%);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.25);
+}
+.ctrl-row input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f0d585 0%, #c9a45a 55%, #8a6b2a 100%);
+  border: 2px solid var(--vermilion-deep);
+  box-shadow: 0 2px 6px rgba(0,0,0,.4), inset 0 0 0 3px rgba(122,31,31,.55);
+  cursor: grab;
+  transition: transform .15s;
+}
+.ctrl-row input[type=range]::-webkit-slider-thumb:hover{ transform: scale(1.08); }
+.ctrl-row input[type=range]::-webkit-slider-thumb:active{ cursor: grabbing; transform: scale(1.15); }
+.ctrl-row input[type=range]::-moz-range-thumb{
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f0d585, #c9a45a 55%, #8a6b2a);
+  border: 2px solid var(--vermilion-deep);
+  box-shadow: 0 2px 6px rgba(0,0,0,.4);
+  cursor: grab;
+}
+.ctrl-val{
+  width: 42px;
+  font-size: 11px;
+  color: var(--gold-deep);
+  font-family: 'Cormorant Garamond', serif;
+  text-align: right;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 760px){
+  .title-block{left: 3vw; top: 40%;}
+  .title-block .cn{font-size: 22px;letter-spacing: 7px;}
+  .title-block .en, .title-block .author{display:none;}
+  .intro-block{display:none;}
+  .nav{padding: 0 18px;}
+  .nav ul{gap:18px;}
+  .hint{bottom: 16vh; letter-spacing: 4px;}
+  .roof{width: 100vw; max-height: 26vh; right: 0;}
+  .control-panel{left: 4vw; bottom: 12vh; width: 220px;}
+}
+</style>
+</head>
+<body>
+
+<!-- 装饰云纹 SVG -->
+<svg class="cloud" style="top:8%;left:-2vw;width:280px;height:280px" viewBox="0 0 200 200"><path d="M30,90 Q20,70 40,60 Q40,40 70,50 Q80,30 110,40 Q140,30 150,55 Q170,55 165,80 Q180,95 160,110 Q140,130 100,125 Q60,135 40,115 Q20,115 30,90Z" fill="none" stroke="#a82c2c" stroke-width="1.2"/></svg>
+<svg class="cloud" style="top:62%;right:-3vw;width:340px;height:340px" viewBox="0 0 200 200"><path d="M30,90 Q20,70 40,60 Q40,40 70,50 Q80,30 110,40 Q140,30 150,55 Q170,55 165,80 Q180,95 160,110 Q140,130 100,125 Q60,135 40,115 Q20,115 30,90Z" fill="none" stroke="#a82c2c" stroke-width="1.2"/></svg>
+<svg class="cloud" style="top:34%;right:6vw;width:180px;height:180px" viewBox="0 0 200 200"><path d="M30,90 Q20,70 40,60 Q40,40 70,50 Q80,30 110,40 Q140,30 150,55 Q170,55 165,80 Q180,95 160,110 Q140,130 100,125 Q60,135 40,115 Q20,115 30,90Z" fill="none" stroke="#c9a45a" stroke-width="1"/></svg>
+
+<nav class="nav">
+  <div class="brand">
+    <span class="seal">帘</span>
+    <span>太白诗帘</span>
+  </div>
+  <ul>
+    <li><a href="#poem">诗卷</a></li>
+    <li><a href="#">互动</a></li>
+    <li><a href="#">关于</a></li>
+  </ul>
+</nav>
+
+<section class="stage" id="stage">
+  <!-- 传统中国风屋檐 -->
+  <img class="roof" id="roof" src="assets/roof.png" alt="传统中国风屋檐" draggable="false">
+
+  <!-- 珠帘画布 -->
+  <canvas id="curtain"></canvas>
+
+  <!-- 左侧标题 -->
+  <div class="title-block" id="poem">
+    <div class="cn">经乱离后天恩流夜郎忆旧游书怀赠江夏韦太守良宰</div>
+    <div class="side">
+      <div class="en">TEXT CURTAIN · LI BAI'S LONGEST POEM · TANG DYNASTY</div>
+      <div class="author">李白 撰</div>
+    </div>
+  </div>
+
+  <!-- 右侧说明 -->
+  <div class="intro-block">
+    <div class="h">题解</div>
+    诗仙李白最长之作，全诗一百六十六句、八百三十字。写经安史之乱、流放夜郎、承恩赦还，赠韦太守兼怀旧游。此帘以毛笔字为珠，悬于檐下；拂之即摆，拽之即走，松手回弹。
+  </div>
+
+  <!-- 提示 -->
+  <div class="hint">— 拂帘则动 · 按住可拽 · 滑动变阻器调波动 —</div>
+
+  <!-- 滑动变阻器控制面板 -->
+  <aside class="control-panel" id="controls">
+    <div class="panel-title">
+      <span>云帘波动</span>
+      <span class="dot"></span>
+      <span>变阻器</span>
+    </div>
+    <div class="ctrl-row">
+      <span class="ctrl-label">风</span>
+      <input type="range" id="windRange" min="0" max="2.5" step="0.01" value="1.0" aria-label="风力波动">
+      <span class="ctrl-val" id="windVal">1.00</span>
+    </div>
+    <div class="ctrl-row">
+      <span class="ctrl-label">拂</span>
+      <input type="range" id="pushRange" min="0" max="1" step="0.01" value="0.16" aria-label="鼠标拂力">
+      <span class="ctrl-val" id="pushVal">0.16</span>
+    </div>
+  </aside>
+
+  <!-- 底部 -->
+  <div class="footer-bar">
+    <div class="page-num"><small>Curtain</small><em>01</em>/<em>01</em></div>
+    <div class="seal-mark">太白诗帘</div>
+  </div>
+</section>
+
+<script>
+"use strict";
+
+const POEM = "天上白玉京，十二楼五城。仙人抚我顶，结发受长生。误逐世间乐，颇穷理乱情。九十六圣君，浮云挂空名。天地赌一掷，未能忘战争。试涉霸王略，将期轩冕荣。时命乃大谬，弃之海上行。学剑翻自哂，为文竟何成。剑非万人敌，文窃四海声。儿戏不足道，五噫出西京。临当欲去时，慷慨泪沾缨。叹君倜傥才，标举冠群英。开筵引祖帐，慰此远徂征。鞍马若浮云，送余骠骑亭。歌钟不尽意，白日落昆明。十月到幽州，戈鋋若罗星。君王弃北海，扫地借长鲸。呼吸走百川，燕然可摧倾。心知不得语，却欲栖蓬瀛。弯弧惧天狼，挟矢不敢张。揽涕黄金台，呼天哭昭王。无人贵骏骨，騄耳空腾骧。乐毅倘再生，于今亦奔亡。蹉跎不得意，驱马还贵乡。逢君听弦歌，肃穆坐华堂。百里独太古，陶然卧羲皇。征乐昌乐馆，开筵列壶觞。贤豪间青娥，对烛俨成行。醉舞纷绮席，清歌绕飞梁。欢娱未终朝，秩满归咸阳。祖道拥万人，供帐遥相望。一别隔千里，荣枯异炎凉。炎凉几度改，九土中横溃。汉甲连胡兵，沙尘暗云海。草木摇杀气，星辰无光彩。白骨成丘山，苍生竟何罪。函关壮帝居，国命悬哥舒。长戟三十万，开门纳凶渠。公卿如犬羊，忠谠醢与菹。二圣出游豫，两京遂丘墟。帝子许专征，秉旄控强楚。节制非桓文，军师拥熊虎。人心失去就，贼势腾风雨。惟君固房陵，诚节冠终古。仆卧香炉顶，餐霞漱瑶泉。门开九江转，枕下五湖连。半夜水军来，浔阳满旌旃。空名适自误，迫胁上楼船。徒赐五百金，弃之若浮烟。辞官不受赏，翻谪夜郎天。夜郎万里道，西上令人老。扫荡六合清，仍为负霜草。日月无偏照，何由诉苍昊。良牧称神明，深仁恤交道。一忝青云客，三登黄鹤楼。顾惭祢处士，虚对鹦鹉洲。樊山霸气尽，寥落天地秋。江带峨眉雪，川横三峡流。万舸此中来，连帆过扬州。送此万里目，旷然散我愁。纱窗倚天开，水树绿如发。窥日畏衔山，促酒喜得月。吴娃与越艳，窈窕夸铅红。呼来上云梯，含笑出帘栊。对客小垂手，罗衣舞春风。宾跪请休息，主人情未极。览君荆山作，江鲍堪动色。清水出芙蓉，天然去雕饰。逸兴横素襟，无时不招寻。朱门拥虎士，列戟何森森。剪凿竹石开，萦流涨清深。登台坐水阁，吐论多英音。片辞贵白璧，一诺轻黄金。谓我不愧君，青鸟明丹心。五色云间鹊，飞鸣天上来。传闻赦书至，却放夜郎回。暖气变寒谷，炎烟生死灰。君登凤池去，忽弃贾生才。桀犬尚吠尧，匈奴笑千秋。中夜四五叹，常为大国忧。旌旆夹两山，黄河当中流。连鸡不得进，饮马空夷犹。安得羿善射，一箭落旄头。";
+
+const CHARS = Array.from(POEM.replace(/\s+/g,''));
+const TOTAL = CHARS.length;
+
+const canvas = document.getElementById('curtain');
+const ctx = canvas.getContext('2d');
+const stage = document.getElementById('stage');
+const roofImg = document.getElementById('roof');
+
+/* ---------- 物理状态 ---------- */
+let strands = [];       // 每根雨丝是粒子数组
+let particles = [];     // 全部粒子
+let spacing = 22;       // 相邻字间距
+let canvasTop = 0;      // canvas 相对 stage 的 top
+let anchorXMin = 0;     // 瓦当行 x 范围（屋檐图在 canvas 内的左右）
+let anchorXMax = 0;
+
+/* 鼠标状态 */
+let mouseClientX = -9999, mouseClientY = -9999;
+let mouseIn = false;
+let grabbing = false;
+let grabbed = new Map();
+
+/* 物理参数 */
+const DAMP = 0.982;
+const GRAVITY = 0.05;
+const SOLVE_ITER = 4;
+const PUSH_R = 150;
+const GRAB_R = 120;
+
+/* 变阻器滑块控制（可实时调节波动） */
+let windMul = 1.0;     // 风：0 = 静止，1 = 默认，>1 = 强风
+let pushMul = 0.16;    // 拂：鼠标推开粒子的位移系数
+
+/* ---------- 诗句切分（以句读为单位，尽量不切断句子） ---------- */
+function splitPieces(){
+  const pieces = [];
+  let buf = '';
+  for (let i = 0; i < CHARS.length; i++){
+    buf += CHARS[i];
+    if (/[。！？；，]/.test(CHARS[i])){ pieces.push(buf); buf = ''; }
+  }
+  if (buf) pieces.push(buf);
+  return pieces;
+}
+
+function splitRain(){
+  const pieces = splitPieces();
+  const COUNT = Math.max(8, Math.min(80, Math.floor((anchorXMax - anchorXMin) / (spacing * 1.02))));
+  const avg = TOTAL / COUNT;
+  const out = [];
+  let cur = '';
+  for (let i = 0; i < pieces.length; i++){
+    cur += pieces[i];
+    const t = avg * (0.6 + Math.random() * 0.8); // 每根长度参差，像自然雨
+    if (cur.length >= t && out.length < COUNT - 1 && pieces[i+1]){
+      out.push(cur); cur = '';
+    }
+  }
+  if (cur) out.push(cur);
+  // 若雨丝数量不足（句子较长），在句子间尽量补分
+  if (out.length < COUNT * 0.7){
+    return splitRainHard(COUNT);
+  }
+  return out;
+}
+
+// 兜底：直接按字数切分（保证数量）
+function splitRainHard(COUNT){
+  const lens = [];
+  const avg = TOTAL / COUNT;
+  for (let i = 0; i < COUNT; i++) lens.push(Math.round(avg * (0.55 + Math.random() * 0.9)));
+  let sum = lens.reduce((a,b)=>a+b,0);
+  let diff = TOTAL - sum;
+  const step = diff > 0 ? 1 : -1;
+  let k = 0;
+  while(diff !== 0){ lens[k % COUNT] += step; diff -= step; k++; }
+  const out = [];
+  let idx = 0;
+  for (let i = 0; i < COUNT; i++){
+    out.push(CHARS.slice(idx, idx + lens[i]).join(''));
+    idx += lens[i];
+  }
+  return out;
+}
+
+/* ---------- 布局与粒子构建 ---------- */
+function build(){
+  const W = canvas.offsetWidth || canvas.width;
+  const H = canvas.offsetHeight || canvas.height;
+
+  // 间距 = sqrt(画布宽×高×0.98 ÷ 总字数) × 0.8 —— 密雨感
+  const S = Math.max(15, Math.min(36, Math.sqrt((W * H * 0.98) / TOTAL) * 0.8));
+  spacing = Math.round(S);
+
+  const texts = splitRain();
+
+  strands = [];
+  particles = [];
+  const roofW = Math.max(60, anchorXMax - anchorXMin);
+  const nRains = texts.length;
+
+  for (let s = 0; s < nRains; s++){
+    const chars = Array.from(texts[s]);
+    const x = anchorXMin + (s + 0.5) * roofW / nRains; // 瓦当等距
+    const strand = [];
+    for (let k = 0; k < chars.length; k++){
+      const y = 14 + k * spacing;
+      const p = { x, y, px: x, py: y, char: chars[k], pinned: k === 0, grabbed: false, windPhase: s * 0.55 };
+      particles.push(p);
+      strand.push(p);
+    }
+    strands.push(strand);
+  }
+}
+
+function resize(){
+  const stageRect = stage.getBoundingClientRect();
+  const roofRect = roofImg.getBoundingClientRect();
+  canvasTop = Math.max(120, roofRect.bottom - stageRect.top + 4);
+  canvas.style.top = canvasTop + 'px';
+  canvas.style.height = Math.max(200, stageRect.height - canvasTop) + 'px';
+  canvas.style.width = stageRect.width + 'px';
+
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  canvas.width = Math.round(canvas.offsetWidth * dpr);
+  canvas.height = Math.round(canvas.offsetHeight * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  // 瓦当行：屋檐图底部水平范围
+  const canvasRect = canvas.getBoundingClientRect();
+  anchorXMin = roofRect.left - canvasRect.left + 8;
+  anchorXMax = roofRect.right - canvasRect.left - 8;
+
+  grabbing = false;
+  grabbed.clear();
+  build();
+}
+
+/* ---------- Verlet 物理 ---------- */
+function integrate(t){
+  const windBase = Math.sin(t * 0.0009) + Math.sin(t * 0.00047 + 1.7) * 0.6;
+
+  for (let i = 0; i < particles.length; i++){
+    const p = particles[i];
+    if (p.pinned || p.grabbed) continue;
+
+    const vx = (p.x - p.px) * DAMP;
+    const vy = (p.y - p.py) * DAMP;
+    p.px = p.x; p.py = p.y;
+    // 雨斜：恒定右向微风 + 各串相位不同的摆动（受 windMul 实时控制）
+    p.x += vx + windBase * Math.sin(p.windPhase) * 0.16 * windMul + 0.07 * windMul;
+    p.y += vy + GRAVITY;
+  }
+}
+
+function solve(){
+  for (let iter = 0; iter < SOLVE_ITER; iter++){
+    for (let s = 0; s < strands.length; s++){
+      const strand = strands[s];
+      for (let i = 1; i < strand.length; i++){
+        const a = strand[i-1];
+        const b = strand[i];
+        let dx = b.x - a.x;
+        let dy = b.y - a.y;
+        let d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 1e-6) d = 1e-6;
+        const diff = (d - spacing) / d;
+        const ox = dx * diff * 0.5;
+        const oy = dy * diff * 0.5;
+        if (!a.pinned && !a.grabbed){ a.x += ox; a.y += oy; }
+        if (!b.pinned && !b.grabbed){ b.x -= ox; b.y -= oy; }
+      }
+    }
+  }
+}
+
+/* ---------- 鼠标交互 ---------- */
+function localMouse(){
+  const r = canvas.getBoundingClientRect();
+  return { x: mouseClientX - r.left, y: mouseClientY - r.top };
+}
+
+function applyMouse(){
+  const m = localMouse();
+  mouseIn = (m.x > 0 && m.x < canvas.offsetWidth && m.y > 0 && m.y < canvas.offsetHeight);
+
+  if (!mouseIn) return;
+
+  if (grabbing){
+    for (const [p, off] of grabbed){
+      p.x = m.x + off.ox * 0.42;
+      p.y = m.y + off.oy * 0.42;
+    }
+    return;
+  }
+
+  const R = PUSH_R;
+  const R2 = R * R;
+  for (let i = 0; i < particles.length; i++){
+    const p = particles[i];
+    if (p.pinned) continue;
+    const dx = p.x - m.x;
+    const dy = p.y - m.y;
+    const d2 = dx*dx + dy*dy;
+    if (d2 < R2 && d2 > 1e-6){
+      const d = Math.sqrt(d2);
+      const push = (R - d) / R;
+      // pushMul 0~1：0=鼠标无效，1=推开最大 150px
+      p.x += (dx / d) * push * R * pushMul;
+      p.y += (dy / d) * push * R * pushMul;
+    }
+  }
+}
+
+window.addEventListener('pointermove', e => {
+  mouseClientX = e.clientX;
+  mouseClientY = e.clientY;
+}, {passive:true});
+
+canvas.addEventListener('pointerdown', e => {
+  e.preventDefault();
+  canvas.setPointerCapture(e.pointerId);
+  mouseClientX = e.clientX;
+  mouseClientY = e.clientY;
+  grabbing = true;
+  grabbed.clear();
+  const m = localMouse();
+  const R2 = GRAB_R * GRAB_R;
+  for (let i = 0; i < particles.length; i++){
+    const p = particles[i];
+    if (p.pinned) continue;
+    const dx = p.x - m.x;
+    const dy = p.y - m.y;
+    const d2 = dx*dx + dy*dy;
+    if (d2 < R2){
+      grabbed.set(p, { ox: dx, oy: dy });
+      p.grabbed = true;
+    }
+  }
+});
+
+canvas.addEventListener('pointermove', e => {
+  if (grabbing){
+    mouseClientX = e.clientX;
+    mouseClientY = e.clientY;
+  }
+});
+
+function releasePointer(){
+  grabbing = false;
+  for (const p of grabbed.keys()) p.grabbed = false;
+  grabbed.clear();
+}
+canvas.addEventListener('pointerup', releasePointer);
+canvas.addEventListener('pointercancel', releasePointer);
+canvas.addEventListener('pointerleave', e => {
+  if (e.buttons === 0 && !grabbing) mouseIn = false;
+});
+
+/* ---------- 渲染：瓦当 + 诗雨 ---------- */
+function render(){
+  const W = canvas.offsetWidth, H = canvas.offsetHeight;
+  ctx.clearRect(0, 0, W, H);
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  ctx.shadowColor = 'rgba(122,31,31,.22)';
+  ctx.shadowBlur = 3;
+  ctx.shadowOffsetY = 1;
+
+  for (let s = 0; s < strands.length; s++){
+    const strand = strands[s];
+    const n = strand.length;
+    const top = strand[0];
+
+    // 瓦当：金环 + 深红心，挂在屋檐下沿
+    ctx.shadowBlur = 4;
+    ctx.fillStyle = '#c9a45a';
+    ctx.beginPath();
+    ctx.arc(top.x, 10, 7, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = 'rgba(122,31,31,.8)';
+    ctx.beginPath();
+    ctx.arc(top.x, 10, 3.2, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 3;
+
+    // 诗句雨丝：顶部实、尾部渐隐（如雨滴滑落）
+    for (let k = 0; k < n; k++){
+      const p = strand[k];
+      const a = Math.max(0.16, 1 - (k / n) * 0.84);
+      ctx.globalAlpha = a;
+      ctx.fillStyle = k === 0 ? '#7a1f1f' : '#a82c2c';
+      ctx.fillText(p.char, p.x, p.y);
+    }
+
+    // 雨滴：雨丝末端悬着的小水滴
+    const b = strand[n-1];
+    ctx.globalAlpha = 0.85;
+    ctx.fillStyle = '#c9a45a';
+    ctx.beginPath();
+    ctx.arc(b.x, b.y + 10, 3, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+  ctx.shadowBlur = 0;
+  ctx.shadowOffsetY = 0;
+}
+
+/* ---------- 主循环 ---------- */
+function frame(t){
+  integrate(t);
+  applyMouse();
+  solve();
+  render();
+  requestAnimationFrame(frame);
+}
+
+/* ---------- 启动 ---------- */
+let booted = false;
+function boot(){
+  if (booted) return;
+  booted = true;
+  resize();
+  requestAnimationFrame(frame);
+}
+
+/* ---------- 变阻器滑块事件 ---------- */
+const windRange = document.getElementById('windRange');
+const windVal   = document.getElementById('windVal');
+const pushRange = document.getElementById('pushRange');
+const pushVal   = document.getElementById('pushVal');
+
+windRange.addEventListener('input', () => {
+  windMul = parseFloat(windRange.value);
+  windVal.textContent = windMul.toFixed(2);
+});
+pushRange.addEventListener('input', () => {
+  pushMul = parseFloat(pushRange.value);
+  pushVal.textContent = pushMul.toFixed(2);
+});
+
+window.addEventListener('resize', resize);
+
+if (document.fonts && document.fonts.ready){
+  document.fonts.ready.then(boot);
+} else {
+  window.addEventListener('load', boot);
+}
+roofImg.addEventListener('load', resize);
+</script>
+</body>
+</html>
